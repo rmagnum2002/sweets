@@ -1,10 +1,30 @@
-// The following line loads the standalone build of Vue instead of the runtime-only build,
-// so you don't have to do: import Vue from 'vue/dist/vue'
-// This is done with the browser options. For the config, see package.json
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App.vue'
+import VueRouter from 'vue-router'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
-new Vue({ // eslint-disable-line no-new
+import App from './App'
+import Home from './components/Home'
+import Contact from './components/Contact'
+import Products from './components/Products'
+
+Vue.use(VueAxios, axios)
+Vue.use(VueRouter)
+
+var router = new VueRouter({
+  routes: [
+    { path: '/home', component: Home },
+    { path: '/contacts', component: Contact },
+    { path: '/products', component: Products }
+  ]
+})
+
+/* eslint-disable no-new */
+new Vue({
   el: '#app',
-  render: (h) => h(App)
+  template: '<App/>',
+  router: router,
+  components: { App }
 })
