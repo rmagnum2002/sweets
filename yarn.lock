@@ -1226,7 +1226,7 @@ colormin@^1.0.5:
     css-color-names "0.0.4"
     has "^1.0.1"
 
-colors@^1.0.3, colors@^1.1.0, colors@~1.1.2:
+colors@^1.1.0, colors@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
 
@@ -1804,7 +1804,7 @@ engine.io@1.6.10:
     engine.io-parser "1.2.4"
     ws "1.0.1"
 
-enhanced-resolve@^0.9.0, enhanced-resolve@~0.9.0:
+enhanced-resolve@~0.9.0:
   version "0.9.1"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-0.9.1.tgz#4d6e689b3725f86090927ccc86cd9f1635b89e2e"
   dependencies:
@@ -3298,7 +3298,7 @@ load-json-file@^1.0.0:
     pinkie-promise "^2.0.0"
     strip-bom "^2.0.0"
 
-loader-utils@0.2.x, loader-utils@^0.2.10, loader-utils@^0.2.11, loader-utils@^0.2.15, loader-utils@^0.2.16, loader-utils@^0.2.3, loader-utils@^0.2.5, loader-utils@^0.2.6, loader-utils@^0.2.7, loader-utils@~0.2.2, loader-utils@~0.2.5:
+loader-utils@0.2.x, loader-utils@^0.2.10, loader-utils@^0.2.11, loader-utils@^0.2.15, loader-utils@^0.2.16, loader-utils@^0.2.3, loader-utils@^0.2.5, loader-utils@^0.2.7, loader-utils@~0.2.2, loader-utils@~0.2.5:
   version "0.2.16"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-0.2.16.tgz#f08632066ed8282835dff88dfb52704765adee6d"
   dependencies:
@@ -4039,10 +4039,6 @@ number-is-nan@^1.0.0:
 oauth-sign@~0.8.1:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
-
-object-assign@^2.0.0:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-2.1.1.tgz#43c36e5d569ff8e4816c4efa8be02d26967c18aa"
 
 object-assign@^4.0.0, object-assign@^4.0.1, object-assign@^4.1.0:
   version "4.1.0"
@@ -5113,7 +5109,7 @@ selenium-server@2.53.1:
   version "4.3.6"
   resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.6.tgz#300bc6e0e86374f7ba61068b5b1ecd57fc6532da"
 
-"semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", semver@^5.0.1, semver@^5.3.0, semver@~5.3.0:
+"semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", semver@^5.3.0, semver@~5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
@@ -5601,17 +5597,6 @@ tryor@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/tryor/-/tryor-0.1.2.tgz#8145e4ca7caff40acde3ccf946e8b8bb75b4172b"
 
-ts-loader@^0.8.1:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-0.8.2.tgz#7331296d13d5b3105cd905cebca39143eed2b255"
-  dependencies:
-    arrify "^1.0.0"
-    colors "^1.0.3"
-    enhanced-resolve "^0.9.0"
-    loader-utils "^0.2.6"
-    object-assign "^2.0.0"
-    semver "^5.0.1"
-
 tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
@@ -5767,10 +5752,6 @@ vary@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.0.tgz#e1e5affbbd16ae768dd2674394b9ad3022653140"
 
-velocity-animate@^1.2.3:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/velocity-animate/-/velocity-animate-1.4.0.tgz#b220a79cecfcdceeaf66c44e09ee9532bf5fcea5"
-
 vendors@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.1.tgz#37ad73c8ee417fb3d580e785312307d274847f22"
@@ -5801,10 +5782,6 @@ vue-axios@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/vue-axios/-/vue-axios-1.2.2.tgz#d18bb48fa7bf469ffa86676960f52a89b7d38a9d"
 
-vue-class-component@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-3.2.0.tgz#eeb0ecc5671954abc2dae9783c02445001de4c4e"
-
 vue-hot-reload-api@^2.0.1:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.0.6.tgz#817d4bfb30f55428aa1012d029499e07f3147d21"
@@ -5826,13 +5803,11 @@ vue-loader@^10.0.0:
     vue-style-loader "^1.0.0"
     vue-template-es2015-compiler "^1.2.2"
 
-vue-material-components@^0.3.4:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/vue-material-components/-/vue-material-components-0.3.4.tgz#10e1edcd84f4381238756aeeba611cf230433105"
+vue-material@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/vue-material/-/vue-material-0.5.1.tgz#9be6ec0d25a9da141893557a914312febdb0aeb0"
   dependencies:
-    ts-loader "^0.8.1"
-    velocity-animate "^1.2.3"
-    vue-class-component "^3.2.0"
+    vue "^2.1.6"
 
 vue-router@^2.1.1:
   version "2.1.1"
@@ -5855,7 +5830,7 @@ vue-template-es2015-compiler@^1.2.2:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.4.0.tgz#7b88853ca4bf8d84ae54ab9e56771de271e60198"
 
-vue@^2.0.1, vue@^2.1.0:
+vue@^2.0.1, vue@^2.1.0, vue@^2.1.6:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.1.6.tgz#2fc0024c07479ac6bc7d34a2cd5ef9ca5e90b143"
 

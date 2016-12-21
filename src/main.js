@@ -2,12 +2,14 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueMaterialComponents from 'vue-material-components'
-import 'vue-material-components/assets/css/materialize.min.css'
-// import MaterializeCss from 'materialize-css/bin/materialize.css'
-import MaterializeCssJs from 'materialize-css/bin/materialize.js'
+import VueMaterial from 'vue-material'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+// import VueMaterialComponents from 'vue-material-components'
+import 'materialize-css/bin/materialize.css'
+import 'materialize-css/bin/materialize.js'
+import 'vue-material/dist/vue-material.css'
+import 'vue-material/dist/vue-material.js'
 // import Icon from 'vue-awesome/components/Icon.vue'
 // import 'vue-awesome/icons'
 
@@ -17,13 +19,10 @@ import Contact from './components/Contact'
 import Products from './components/Products'
 import Product from './components/Product'
 
-Vue.use(
-  VueRouter,
-  VueMaterialComponents,
-  VueAxios,
-  axios,
-  MaterializeCssJs
-  )
+Vue.use(VueRouter)
+// Vue.use(VueMaterialComponents)
+Vue.use(VueAxios, axios)
+Vue.use(VueMaterial)
 
 Vue.prototype.$http = axios
 

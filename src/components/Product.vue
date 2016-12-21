@@ -17,10 +17,18 @@
           p(v-text='product.description')
         .card-action
           .row
-            .input-field.inline.col.m4
-              input#amount.validate(type='number', name='amount', min='1', autocomplete='off')
-              label(for='amount') Cantitate
-          a(href='#') Adaugă la coș
+            .col.m4
+              .input-field.inline
+                input#amount.validate(type='number', name='amount', min='0', autocomplete='off' v-model='order.quantity')
+                label(for='amount') Cantitate
+            .col.m8
+              md-button.md-icon-button.md-raised(@click='order.quantity = parseInt(order.quantity) + 1')
+                md-icon add
+              md-button.md-icon-button.md-raised(@click='order.quantity = parseInt(order.quantity) - 1' v-bind:disabled='order.quantity < 1')
+                md-icon remove
+          a(href='#' v-if='order.quantity > 0')
+            | Comandă
+            md-tooltip(md-direction="top") Adaugă la comanda curentă
 </template>
 
 <script>
@@ -29,6 +37,9 @@ export default {
   data () {
     return {
       msg: 'Welcome to products page',
+      order: {
+        quantity: 1
+      },
       product: {
         title: null,
         images: null,
@@ -39,6 +50,16 @@ export default {
 
   mounted: function () {
     this.callApi()
+  },
+
+  watch: {
+    'order.quantity': function (newVal, oldVal) {
+      // console.log(parseInt(newVal))
+      // console.log(parseInt(newVal) <= 0)
+      if (parseInt(newVal) <= 0 && typeof (newVal) !== 'number') {
+        this.order.quantity = 0
+      }
+    }
   },
 
   methods: {

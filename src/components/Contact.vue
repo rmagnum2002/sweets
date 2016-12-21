@@ -24,7 +24,7 @@
           <label for="email">Email</label>
         </div>
       </div>
-      <div class="row">
+<!--       <div class="row">
         <div class="col s12">
           This is an inline input field:
           <div class="input-field inline">
@@ -32,7 +32,7 @@
             <label for="email" data-error="wrong" data-success="right">Email</label>
           </div>
         </div>
-      </div>
+      </div> -->
     </form>
   </div>
 </div>
@@ -51,5 +51,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+#contact form {
+  background: #fff;
+  padding: 20px;
+}
 </style>

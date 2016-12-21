@@ -1,5 +1,7 @@
 <template>
-  <md-button class="waves-effect waves-light">Hello, world!</md-button>
+  <div id="home">
+
+  </div>
 </template>
 
 <script>
