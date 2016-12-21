@@ -1,8 +1,5 @@
 <template>
-  <div id="header">
-    <h1>Bunătăți de la Marika</h1>
-    <h5 v-text='msg'></h5>
-  </div>
+  <md-button class="waves-effect waves-light">Hello, world!</md-button>
 </template>
 
 <script>

@@ -14,8 +14,14 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "materialize-css": "^0.97.8",
+    "node-sass": "^4.1.1",
+    "pug": "^2.0.0-beta6",
+    "sass-loader": "^4.1.0",
     "vue": "^2.1.0",
+    "vue-awesome": "^2.0.3",
     "vue-axios": "^1.2.2",
+    "vue-material-components": "^0.3.4",
     "vue-router": "^2.1.1"
   },
   "devDependencies": {

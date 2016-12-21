@@ -1,11 +1,9 @@
 <template>
-  <div id="app">
-    <div id="navlinks">
-      <router-link to='/home'>Acasă</router-link>
-      <router-link to='/products'>Produse</router-link>
-      <router-link to='/contacts'>Contacte</router-link>
-    </div>
-    <router-view></router-view>
+  <div id="app" class='container'>
+    <app-header v-bind:message='msg'></app-header>
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
 
     <!-- <img src="./assets/logo.png"> -->
   </div>
@@ -13,26 +11,25 @@
 
 <script>
 import Home from './components/Home'
-import Contact from './components/Contact'
 import AppHeader from './components/AppHeader'
 
 export default {
   name: 'app',
+  data () {
+    return {
+      msg: 'Welcome to home page'
+    }
+  },
   components: {
     Home,
-    Contact,
     AppHeader
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+body {
+  background: url(./assets/bg1.png);
 }
 a.router-link-active {
   color: #607D8B;
@@ -40,17 +37,10 @@ a.router-link-active {
 a {
   color: #42b983;
 }
-h1, h2 {
-  font-weight: normal;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
 </style>

@@ -1,10 +1,13 @@
 <template>
   <div id="header">
-    <h1>Bunătăți de la Marika</h1>
+    <h3 class='center-align'>Bunătăți de la Marika</h3>
     <h5 v-text='msg'></h5>
-    <router-link to='/'>Acasă</router-link>
-    <router-link to='/products'>Produse</router-link>
-    <router-link to='/contacts'>Contacte</router-link>
+    <div class="center-align">
+      <router-link to='/home'>Acasă</router-link>
+      <router-link to='/products'>Produse</router-link>
+      <router-link to='/contacts'>Contacte</router-link>
+    </div>
+    <hr>
   </div>
 </template>
 
