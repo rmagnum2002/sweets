@@ -4,31 +4,35 @@
     .col.s12.m6
       .card.blue-grey.darken-1
         .card-content.white-text
-          span.card-title(v-text='product.title')
+          //- span.card-title(v-text='product.title')
           img.responsive-img(v-bind:src='product.main_image')
           //- .carousel.carousel-slider
           //-   a.carousel-item(href='#one!', v-for='image in product.images')
           //-     img(v-bind:src='image')
         .card-action
-          .price.orange-text 60 lei/buc
+          span.price.orange-text(v-text='product.price')
+          span.unit.orange-text(v-text='" lei/" + product.unit')
     .col.s12.m6
       .card.blue-white.darken-1
         .card-content.dark-text
+          .card-title(v-text='product.title')
           p(v-text='product.description')
         .card-action
           .row
             .col.m4
               .input-field.inline
                 input#amount.validate(type='number', name='amount', min='0', autocomplete='off' v-model='order.quantity')
-                label(for='amount') Cantitate
+                label(for='amount' v-text='"Cantitate (" + product.unit + ")"')
             .col.m8
-              md-button.md-icon-button.md-raised(@click='order.quantity = parseInt(order.quantity) + 1')
-                md-icon add
-              md-button.md-icon-button.md-raised(@click='order.quantity = parseInt(order.quantity) - 1' v-bind:disabled='order.quantity < 1')
-                md-icon remove
-          a(href='#' v-if='order.quantity > 0')
-            | Comandă
-            md-tooltip(md-direction="top") Adaugă la comanda curentă
+              //- .btn-floating.waves-effect.waves-light(@click='order.quantity = parseInt(order.quantity) + 1')
+              //-     i.material-icons add
+              //- br
+              //- br
+              //- .btn-floating.waves-effect.waves-light.red(@click='order.quantity = parseInt(order.quantity) - 1' v-bind:disabled='order.quantity < 1')
+              //-     i.material-icons remove
+              button.btn-floating.waves-effect.waves-light(type="submit" name="action")
+                i.material-icons.right add_shopping_cart
+            //- md-tooltip(md-direction="top") Adaugă la comanda curentă
 </template>
 
 <script>
@@ -56,7 +60,7 @@ export default {
     'order.quantity': function (newVal, oldVal) {
       // console.log(parseInt(newVal))
       // console.log(parseInt(newVal) <= 0)
-      if (parseInt(newVal) <= 0 && typeof (newVal) !== 'number') {
+      if (parseInt(newVal) <= 0 || typeof (newVal) !== 'number' || newVal === 'null') {
         this.order.quantity = 0
       }
     }

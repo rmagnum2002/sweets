@@ -19,10 +19,9 @@
     "pug": "^2.0.0-beta6",
     "sass-loader": "^4.1.0",
     "vue": "^2.1.0",
-    "vue-awesome": "^2.0.3",
     "vue-axios": "^1.2.2",
-    "vue-material": "^0.5.1",
-    "vue-router": "^2.1.1"
+    "vue-router": "^2.1.1",
+    "vuex": "^2.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

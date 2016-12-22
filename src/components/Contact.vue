@@ -1,5 +1,5 @@
 <template>
-<div id="contact">
+<div id="contact" class='z-depth-4'>
   <div class="row">
     <form class="col s12 m6 offset-m3">
       <div class="row">
@@ -24,6 +24,10 @@
           <label for="email">Email</label>
         </div>
       </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+
 <!--       <div class="row">
         <div class="col s12">
           This is an inline input field:
@@ -51,7 +55,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#contact form {
+#contact {
   background: #fff;
   padding: 20px;
 }
