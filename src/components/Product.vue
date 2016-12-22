@@ -30,7 +30,7 @@
               //- br
               //- .btn-floating.waves-effect.waves-light.red(@click='order.quantity = parseInt(order.quantity) - 1' v-bind:disabled='order.quantity < 1')
               //-     i.material-icons remove
-              button.btn-floating.waves-effect.waves-light(type="submit" name="action")
+              button.btn-floating.waves-effect.waves-light(type="submit" name="action" v-bind:disabled='order.quantity < 1' @click="addToCart(product)")
                 i.material-icons.right add_shopping_cart
             //- md-tooltip(md-direction="top") Adaugă la comanda curentă
 </template>
@@ -42,7 +42,7 @@ export default {
     return {
       msg: 'Welcome to products page',
       order: {
-        quantity: 1
+        quantity: null
       },
       product: {
         title: null,
@@ -67,6 +67,9 @@ export default {
   },
 
   methods: {
+    addToCart: function (product) {
+      this.$store.state.cart_items.push(product)
+    },
     callApi: function () {
       var id = this.$route.params.id
       var api = 'http://lvh.me:3000/api/products'

@@ -1,12 +1,12 @@
 <template lang='pug'>
 #products
   .row
-    .col.s12.m3.l3(v-for='product in products')
-      .card.medium.blue-grey.darken-1.z-depth-4
-        .card-content.white-text
-          span.card-title(v-text='product.title')
+    .col.s12.m4.l3(v-for='product in products')
+      .card.medium.blue-grey.darken-1.z-depth-5
+        .card-content.white
+          div.card-title(v-text='product.title')
           router-link(:to="{ name: 'product', params: { id: product.id }}")
-            img.responsive-img(v-bind:src='product.main_image')
+            img.circle.responsive-img(v-bind:src='product.main_image')
           p(v-text='product.description')
         .card-action
           router-link(:to="{ name: 'product', params: { id: product.id }}") Deschide
@@ -51,6 +51,7 @@ export default {
     .card-title {
       font-size: 20px;
       line-height: 30px;
+      min-height: 60px;
     }
     .card-content {
       max-height: 100%;

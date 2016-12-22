@@ -24,7 +24,7 @@
           <label for="email">Email</label>
         </div>
       </div>
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <button class="btn waves-effect waves-light" type="submit" name="action">Trimite
         <i class="material-icons right">send</i>
       </button>
 

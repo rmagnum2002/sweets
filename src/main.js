@@ -4,9 +4,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import Vuex from 'vuex'
 import 'materialize-css/bin/materialize.css'
 import 'materialize-css/bin/materialize.js'
+import { store } from './store'
 
 import App from './App'
 import Home from './components/Home'
@@ -16,7 +16,6 @@ import Product from './components/Product'
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
-Vue.use(Vuex)
 
 Vue.prototype.$http = axios
 
@@ -34,5 +33,6 @@ new Vue({
   el: '#app',
   template: '<App/>',
   router: router,
+  store,
   components: { App }
 })
