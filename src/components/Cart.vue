@@ -7,8 +7,11 @@
       table.bordered.highlight.cart_items
         tbody
           tr(v-for='(product, index) in cart_items' v-bind:key='product.id')
-            td.center-align(v-text='index')
-            td(v-text='product.title')
+            td.center-align(v-text='product.quantity')
+            td x
+            td
+              router-link(:to="{ name: 'product', params: { id: product.id }}" v-text='product.title')
+              //(v-text='product.title')
             td.center-align
              a(href='#')
               i.material-icons highlight_off
@@ -46,9 +49,10 @@ export default {
     right: 0;
     z-index: 10000;
     width: 300px;
+    margin-top: 20px;
     .cart_trigger{
       float: right;
-      margin-right: 5px;
+      margin: -20px 20px 0 0;
     }
     .cart_content {
       background: #fff;

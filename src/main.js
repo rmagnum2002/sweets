@@ -20,6 +20,7 @@ Vue.use(VueAxios, axios)
 Vue.prototype.$http = axios
 
 var router = new VueRouter({
+  mode: 'history',
   routes: [
     { path: '/home', component: Home },
     { path: '/contacts', component: Contact },

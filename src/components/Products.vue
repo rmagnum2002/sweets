@@ -11,7 +11,6 @@
         .card-action
           router-link(:to="{ name: 'product', params: { id: product.id }}") Deschide
           //<a href="#">This is a link</a>
-
 </template>
 
 <script>
@@ -25,11 +24,11 @@ export default {
   },
 
   mounted: function () {
-    this.callApi()
+    this.loadProducts()
   },
 
   methods: {
-    callApi: function () {
+    loadProducts: function () {
       var api = 'http://lvh.me:3000/api/products/all'
       this.$http.get(api).then((response) => {
         this.products = response.data

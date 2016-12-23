@@ -52,11 +52,15 @@ export default {
     }
   },
 
-  mounted: function () {
-    this.callApi()
+  created: function () {
+    this.getProduct()
   },
 
   watch: {
+    '$route': function () {
+      this.order.quantity = null
+      this.getProduct()
+    },
     'order.quantity': function (newVal, oldVal) {
       // console.log(parseInt(newVal))
       // console.log(parseInt(newVal) <= 0)
@@ -68,14 +72,38 @@ export default {
 
   methods: {
     addToCart: function (product) {
-      this.$store.state.cart_items.push(product)
+      var arr = this.$store.state.cart_items
+      var result = arr.filter(function (obj) {
+        return obj.id === product.id
+      })
+      if (result.length > 0) {
+        // var prod = result[0]
+        var index = arr.indexOf(product)
+        product.quantity += this.order.quantity
+        arr.splice(index)
+        arr.push(product)
+      } else {
+        product['quantity'] = this.order.quantity
+        arr.push(product)
+      }
+      // this.$store.state.cart_items.push(product)
     },
-    callApi: function () {
+    getProduct: function () {
       var id = this.$route.params.id
       var api = 'http://lvh.me:3000/api/products'
       this.$http.get(api, {params: {id: id}}).then((response) => {
         this.product = response.data
+        this.getSimilar()
         // $('.carousel.carousel-slider').carousel({full_width: true})
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
+    getSimilar: function () {
+      var tags = []
+      var api = 'http://lvh.me:3000/api/products/similar'
+      this.$http.get(api, {params: {tags: tags}}).then((response) => {
+        // this.similar = response.data
       }).catch(function (error) {
         console.log(error)
       })
