@@ -33,6 +33,16 @@
               button.btn-floating.waves-effect.waves-light(type="submit" name="action" v-bind:disabled='order.quantity < 1' @click="addToCart(product)")
                 i.material-icons.right add_shopping_cart
             //- md-tooltip(md-direction="top") Adaugă la comanda curentă
+
+  .row
+    .col.s12.m4.l3(v-for='product in similar_products')
+      .card.small.blue-grey.darken-1.z-depth-5.hoverable
+        .card-content.white
+          router-link(:to="{ name: 'product', params: { id: product.id }}")
+            img.circle.responsive-img(v-bind:src='product.main_image')
+          p(v-text='product.description')
+        .card-action
+          router-link(:to="{ name: 'product', params: { id: product.id }}" v-text='product.title')
 </template>
 
 <script>
@@ -48,7 +58,8 @@ export default {
         title: null,
         images: null,
         description: null
-      }
+      },
+      similar_products: null
     }
   },
 
@@ -62,8 +73,6 @@ export default {
       this.getProduct()
     },
     'order.quantity': function (newVal, oldVal) {
-      // console.log(parseInt(newVal))
-      // console.log(parseInt(newVal) <= 0)
       if (parseInt(newVal) <= 0 || typeof (newVal) !== 'number' || newVal === 'null') {
         this.order.quantity = 0
       }
@@ -77,7 +86,6 @@ export default {
         return obj.id === product.id
       })
       if (result.length > 0) {
-        // var prod = result[0]
         var index = arr.indexOf(product)
         product.quantity += this.order.quantity
         arr.splice(index)
@@ -86,7 +94,6 @@ export default {
         product['quantity'] = this.order.quantity
         arr.push(product)
       }
-      // this.$store.state.cart_items.push(product)
     },
     getProduct: function () {
       var id = this.$route.params.id
@@ -94,7 +101,6 @@ export default {
       this.$http.get(api, {params: {id: id}}).then((response) => {
         this.product = response.data
         this.getSimilar()
-        // $('.carousel.carousel-slider').carousel({full_width: true})
       }).catch(function (error) {
         console.log(error)
       })
@@ -103,7 +109,7 @@ export default {
       var tags = []
       var api = 'http://lvh.me:3000/api/products/similar'
       this.$http.get(api, {params: {tags: tags}}).then((response) => {
-        // this.similar = response.data
+        this.similar_products = response.data
       }).catch(function (error) {
         console.log(error)
       })

@@ -2,7 +2,7 @@
 #products
   .row
     .col.s12.m4.l3(v-for='product in products')
-      .card.medium.blue-grey.darken-1.z-depth-5
+      .card.medium.blue-grey.darken-1.z-depth-5.hoverable
         .card-content.white
           div.card-title(v-text='product.title')
           router-link(:to="{ name: 'product', params: { id: product.id }}")
