@@ -31,7 +31,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss'>
 body {
   background: url(./assets/bg1.png);
 }
@@ -46,5 +46,26 @@ a {
 }
 .fade-enter, .fade-leave-active {
   opacity: 0
+}
+ul.tags {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li:after {
+    content: ", ";
+    color: #aaa;
+  }
+  li:first-child:after {
+    content: "Etichete: ";
+  }
+  li:last-child:after {
+    content: "";
+  }
 }
 </style>

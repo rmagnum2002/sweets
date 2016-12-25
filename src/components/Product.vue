@@ -17,6 +17,11 @@
         .card-content.dark-text
           .card-title(v-text='product.title')
           p(v-text='product.description')
+          hr
+          ul.tags
+            li
+            li(v-for='tag in product.tag_list')
+              router-link.tag(:to="{ path: '/products', query: { tag: tag }}", v-text='tag')
         .card-action
           .row
             .col.m4
@@ -24,25 +29,18 @@
                 input#amount.validate(type='number', name='amount', min='0', autocomplete='off' v-model='order.quantity')
                 label(for='amount' v-text='"Cantitate (" + product.unit + ")"')
             .col.m8
-              //- .btn-floating.waves-effect.waves-light(@click='order.quantity = parseInt(order.quantity) + 1')
-              //-     i.material-icons add
-              //- br
-              //- br
-              //- .btn-floating.waves-effect.waves-light.red(@click='order.quantity = parseInt(order.quantity) - 1' v-bind:disabled='order.quantity < 1')
-              //-     i.material-icons remove
               button.btn-floating.waves-effect.waves-light(type="submit" name="action" v-bind:disabled='order.quantity < 1' @click="addToCart(product)")
                 i.material-icons.right add_shopping_cart
-            //- md-tooltip(md-direction="top") Adaugă la comanda curentă
 
   .row
     .col.s12.m4.l3(v-for='product in similar_products')
       .card.small.blue-grey.darken-1.z-depth-5.hoverable
         .card-content.white
-          router-link(:to="{ name: 'product', params: { id: product.id }}")
+          router-link(:to="{ name: 'product', params: { id: product.slug }}")
             img.circle.responsive-img(v-bind:src='product.main_image')
           p(v-text='product.description')
         .card-action
-          router-link(:to="{ name: 'product', params: { id: product.id }}" v-text='product.title')
+          router-link(:to="{ name: 'product', params: { id: product.slug }}" v-text='product.title')
 </template>
 
 <script>
@@ -100,15 +98,14 @@ export default {
       var api = 'http://lvh.me:3000/api/products'
       this.$http.get(api, {params: {id: id}}).then((response) => {
         this.product = response.data
-        this.getSimilar()
+        this.getSimilar(this.product.tag_list)
       }).catch(function (error) {
         console.log(error)
       })
     },
-    getSimilar: function () {
-      var tags = []
+    getSimilar: function (tagList) {
       var api = 'http://lvh.me:3000/api/products/similar'
-      this.$http.get(api, {params: {tags: tags}}).then((response) => {
+      this.$http.get(api, {params: {tags: tagList}}).then((response) => {
         this.similar_products = response.data
       }).catch(function (error) {
         console.log(error)
