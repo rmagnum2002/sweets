@@ -95,8 +95,7 @@ export default {
     },
     getProduct: function () {
       var id = this.$route.params.id
-      var api = 'http://lvh.me:3000/api/products'
-      this.$http.get(api, {params: {id: id}}).then((response) => {
+      this.axios.get('products', {params: {id: id}}).then((response) => {
         this.product = response.data
         this.getSimilar(this.product.tag_list)
       }).catch(function (error) {
@@ -104,8 +103,7 @@ export default {
       })
     },
     getSimilar: function (tagList) {
-      var api = 'http://lvh.me:3000/api/products/similar'
-      this.$http.get(api, {params: {tags: tagList}}).then((response) => {
+      this.axios.get('products/similar', {params: {tags: tagList}}).then((response) => {
         this.similar_products = response.data
       }).catch(function (error) {
         console.log(error)

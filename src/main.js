@@ -13,6 +13,11 @@ import Home from './components/Home'
 import Contact from './components/Contact'
 import Products from './components/Products'
 import Product from './components/Product'
+import Signup from './components/Signup.vue'
+import Login from './components/Login.vue'
+
+axios.defaults.baseURL = 'http://api.lvh.me:3000/v1/'
+axios.defaults.headers.common['Accept'] = 'application/vnd.sweets.v1'
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
@@ -25,7 +30,9 @@ var router = new VueRouter({
     { path: '/home', component: Home },
     { path: '/contacts', component: Contact },
     { path: '/products', component: Products },
-    { path: '/product/:id', name: 'product', component: Product }
+    { path: '/product/:id', name: 'product', component: Product },
+    { path: '/login', component: Login },
+    { path: '/signup', component: Signup }
   ]
 })
 

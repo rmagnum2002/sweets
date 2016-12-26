@@ -43,17 +43,15 @@ export default {
 
   methods: {
     loadProducts: function () {
-      var api = 'http://lvh.me:3000/api/products/all'
       var query = this.$route.query
-      this.$http.get(api, { params: query }).then((response) => {
+      this.axios('/products/all', { params: query }).then((response) => {
         this.products = response.data
       }).catch(function (error) {
         console.log(error)
       })
     },
     loadTags: function () {
-      var api = 'http://lvh.me:3000/api/products/tags'
-      this.$http.get(api).then((response) => {
+      this.axios('/products/tags').then((response) => {
         this.tags = response.data
       }).catch(function (error) {
         console.log(error)
