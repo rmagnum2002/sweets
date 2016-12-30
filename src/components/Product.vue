@@ -1,20 +1,19 @@
 <template lang='pug'>
 #product
   .row
-    .col.s12.m6
-      .card.blue-grey.darken-1
-        .card-content.white-text
+    .col.s12.m9
+      .card.blue-white.darken-1
+        .card-image(v-bind:style="{'background-image': 'url(' + product.main_image + ')', 'height': '300px'}")
+        .card-content
           //- span.card-title(v-text='product.title')
-          img.responsive-img(v-bind:src='product.main_image')
+          //img.responsive-img(v-bind:src='product.main_image')
           //- .carousel.carousel-slider
           //-   a.carousel-item(href='#one!', v-for='image in product.images')
           //-     img(v-bind:src='image')
-        .card-action
-          span.price.orange-text(v-text='product.price')
-          span.unit.orange-text(v-text='" lei/" + product.unit')
-    .col.s12.m6
-      .card.blue-white.darken-1
-        .card-content.dark-text
+          //.card-action
+          //span.price.orange-text(v-text='product.price')
+          //span.unit.orange-text(v-text='" lei/" + product.unit')
+
           .card-title(v-text='product.title')
           p(v-text='product.description')
           hr
@@ -32,15 +31,16 @@
               button.btn-floating.waves-effect.waves-light(type="submit" name="action" v-bind:disabled='order.quantity < 1' @click="addToCart(product)")
                 i.material-icons.right add_shopping_cart
 
-  .row
-    .col.s12.m4.l3(v-for='product in similar_products')
-      .card.small.blue-grey.darken-1.z-depth-5.hoverable
-        .card-content.white
-          router-link(:to="{ name: 'product', params: { id: product.slug }}")
-            img.circle.responsive-img(v-bind:src='product.main_image')
-          p(v-text='product.description')
-        .card-action
-          router-link(:to="{ name: 'product', params: { id: product.slug }}" v-text='product.title')
+    .col.s12.m3.white
+      div(v-for='product in similar_products')
+        .card.small.blue-grey.darken-1
+          .card-image(v-bind:style="{'background-image': 'url(' + product.main_image + ')', height: '45%'}")
+          .card-content.white
+            //router-link(:to="{ name: 'product', params: { id: product.slug }}")
+              //img.circle.responsive-img(v-bind:src='product.main_image')
+            p(v-text='product.description')
+          .card-action
+            router-link(:to="{ name: 'product', params: { id: product.slug }}" v-text='product.title')
 </template>
 
 <script>
@@ -114,8 +114,11 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.carousel.carousel-slider{
-  height: 300px !important;
+<style lang='scss' scoped>
+.card {
+  .card-image {
+    background-position: center;
+    background-size: cover;
+  }
 }
 </style>
