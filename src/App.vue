@@ -1,7 +1,7 @@
 <template>
   <div id="app" class='container'>
     <cart></cart>
-    <app-header v-bind:message='msg'></app-header>
+    <app-header v-bind:message='msg' v-bind:title='title'></app-header>
     <transition name="fade">
       <router-view></router-view>
     </transition>
@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import Home from './components/Home'
 import AppHeader from './components/AppHeader'
 import Cart from './components/Cart'
 
@@ -19,12 +18,13 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Gustos, natural, accesibil',
+      msg: 'tasty & natural',
+      title: 'Sweets',
       cart_items: this.$store.state.cart_items
     }
   },
   components: {
-    Home,
+    // Home,
     AppHeader,
     Cart
   }

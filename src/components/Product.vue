@@ -3,16 +3,21 @@
   .row
     .col.s12.m9
       .card.blue-white.darken-1
-        .card-image(v-bind:style="{'background-image': 'url(' + product.main_image + ')', 'height': '300px'}")
+        //- .card-image(v-bind:style="{'background-image': 'url(' + product.main_image + ')', 'height': '300px'}")
+        .carousel.carousel-slider(data-indicators="true")
+          a.carousel-item(v-for='image in product.images')
+            .slide(v-bind:style="{'background-image': 'url(' + image + ')', height: '100%'}")
+            //- img(v-bind:src='image')
+
         .card-content
           //- span.card-title(v-text='product.title')
-          //img.responsive-img(v-bind:src='product.main_image')
+          //- img.responsive-img(v-bind:src='product.main_image')
           //- .carousel.carousel-slider
           //-   a.carousel-item(href='#one!', v-for='image in product.images')
           //-     img(v-bind:src='image')
-          //.card-action
-          //span.price.orange-text(v-text='product.price')
-          //span.unit.orange-text(v-text='" lei/" + product.unit')
+          //-.card-action
+          //-span.price.orange-text(v-text='product.price')
+          //-span.unit.orange-text(v-text='" lei/" + product.unit')
 
           .card-title(v-text='product.title')
           p(v-text='product.description')
@@ -105,6 +110,7 @@ export default {
     getSimilar: function (tagList) {
       this.axios.get('products/similar', {params: {tags: tagList}}).then((response) => {
         this.similar_products = response.data
+        window.$('.carousel.carousel-slider').carousel({full_width: true})
       }).catch(function (error) {
         console.log(error)
       })
@@ -116,6 +122,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
 .card {
+  .carousel-slider{
+    height: 250px;
+  }
   .card-image {
     background-position: center;
     background-size: cover;

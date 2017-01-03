@@ -7,6 +7,7 @@ export const store = new Vuex.Store({
   state: {
     cart_items: [],
     selected_tag: null,
-    view_mode: 'module'
+    view_mode: window.sessionStorage.getItem('viewMode') || 'module',
+    logedIn: window.sessionStorage.getItem('accessToken') || false
   }
 })

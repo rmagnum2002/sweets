@@ -18,6 +18,7 @@ import Login from './components/Login.vue'
 
 axios.defaults.baseURL = 'http://api.lvh.me:3000/v1/'
 axios.defaults.headers.common['Accept'] = 'application/vnd.sweets.v1'
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.sessionStorage.getItem('accessToken')
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
@@ -29,11 +30,32 @@ var router = new VueRouter({
   routes: [
     { path: '/home', component: Home },
     { path: '/contacts', component: Contact },
-    { path: '/products', component: Products },
-    { path: '/product/:id', name: 'product', component: Product },
+    { path: '/products',
+      component: Products },
+    { path: '/product/:id',
+      meta: {auth: true},
+      name: 'product',
+      component: Product },
     { path: '/login', component: Login },
     { path: '/signup', component: Signup }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.auth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!store.state.logedIn) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // make sure to always call next()!
+  }
 })
 
 /* eslint-disable no-new */

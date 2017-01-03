@@ -9,10 +9,13 @@
 
   .row.product_listing
     .col.s12.m12.l2
-      router-link(to='/products')
-        .chip(v-bind:class='{"active" : $route.query.tag == null}') Toate
-      router-link(:to="{ path: 'products', query: { tag: tag.name }}", v-for='tag in tags')
-        .chip(v-text='tag.name + " (" + tag.taggings_count + ")"' v-bind:class='{"active" : $route.query.tag == tag.name}')
+      ul
+        li
+          router-link(to='/products')
+            .chip(v-bind:class='{"active" : $route.query.tag == null}') All
+        li
+          router-link(:to="{ path: 'products', query: { tag: tag.name }}", v-for='tag in tags')
+            .chip(v-text='tag.name + " (" + tag.taggings_count + ")"' v-bind:class='{"active" : $route.query.tag == tag.name}')
     .col.s12.m12.l10(v-if='display == "module"')
       .row
         .col.s12.m4.l4(v-for='product in products')
@@ -89,6 +92,7 @@ export default {
     },
     viewMode: function (mode) {
       this.$store.state.view_mode = mode
+      window.sessionStorage.setItem('viewMode', mode)
     }
   }
 }
