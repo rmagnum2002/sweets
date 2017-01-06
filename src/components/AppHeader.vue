@@ -16,7 +16,9 @@
       li(v-if='!logedIn')
         router-link(to='/signup') Register
       li(v-if='logedIn')
-        a(href='#' @click.prevent='logOut') Sign Out
+        span(v-if='currentUser' v-text='currentUser.full_name + " "')
+        small
+          a(href='#' @click.prevent='logOut') (Sign Out)
   hr
 </template>
 
@@ -25,6 +27,7 @@ export default {
   name: 'app-header',
   props: ['title', 'message'],
   computed: {
+    currentUser () { return this.$store.state.currentUser },
     logedIn () { return this.$store.state.logedIn }
   },
   methods: {

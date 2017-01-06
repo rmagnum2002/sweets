@@ -19,7 +19,7 @@
     .col.s12.m12.l10(v-if='display == "module"')
       .row
         .col.s12.m4.l4(v-for='product in products')
-          .card.medium.blue-grey.darken-1.z-depth-5.hoverable
+          .card.medium.blue-grey.darken-1.hoverable
             .card-image(v-bind:style="{'background-image': 'url(' + product.main_image + ')', height: '45%'}")
             .card-content.white
               .card-title
@@ -29,7 +29,7 @@
               router-link(:to="{ name: 'product', params: { id: product.slug }}") Detalii
               //<a href="#">This is a link</a>
     .col.s12.m12.l10(v-if='display == "list"')
-      .card.horizontal(v-for='product in products')
+      .card.horizontal.hoverable(v-for='product in products')
         .card-image(v-bind:style="{'background-image': 'url(' + product.main_image + ')', width: '250px'}")
         .card-stacked
           .card-content
@@ -72,9 +72,9 @@ export default {
     loadProducts: function () {
       var query = this.$route.query
       if (query.tag && query.tag.length > 0) {
-        this.$store.state.selected_tag = query.tag
+        this.$store.commit('setActiveTag', {tag: query.tag})
       } else {
-        this.$store.state.selected_tag = null
+        this.$store.commit('setActiveTag', {tag: null})
       }
 
       this.axios('/products/all', { params: query }).then((response) => {
@@ -91,7 +91,7 @@ export default {
       })
     },
     viewMode: function (mode) {
-      this.$store.state.view_mode = mode
+      this.$store.commit('setViewMode', {mode: mode})
       window.sessionStorage.setItem('viewMode', mode)
     }
   }

@@ -5,8 +5,6 @@
     <transition name="fade">
       <router-view></router-view>
     </transition>
-
-    <!-- <img src="./assets/logo.png"> -->
   </div>
 </template>
 
@@ -24,9 +22,22 @@ export default {
     }
   },
   components: {
-    // Home,
     AppHeader,
     Cart
+  },
+
+  mounted: function () {
+    this.loadUser()
+  },
+
+  methods: {
+    loadUser: function () {
+      this.axios.get('user').then((response) => {
+        this.$store.commit('setCurrentUser', response.data)
+      }).catch(function (error) {
+        console.log(error)
+      })
+    }
   }
 }
 </script>

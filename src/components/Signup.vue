@@ -1,8 +1,16 @@
 <template lang='pug'>
 #signup.z-depth-4
   .row
-    form.col.s12.m6.l4.offset-m3.offset-l4(v-on:submit.prevent='signup')
+    form.col.s12.m8.l6.offset-m2.offset-l3(v-on:submit.prevent='signup')
       api-errors(v-bind:errors='errors')
+      .row
+        .input-field.col.s6
+          input#first_name.validate(type='text', v-model='first_name')
+          label(for='first_name') First Name
+
+        .input-field.col.s6
+          input#last_name.validate(type='text', v-model='last_name')
+          label(for='last_name') Last Name
       .row
         .input-field.col.s12
           input#email.validate(type='email', v-model='email')
@@ -27,6 +35,8 @@ export default {
   name: 'signup',
   data () {
     return {
+      first_name: null,
+      last_name: null,
       email: null,
       password: null,
       password_confirmation: null,
@@ -38,17 +48,13 @@ export default {
     ApiErrors
   },
 
-  // computed: {
-  //   errors: function () {
-  //     return null
-  //   }
-  // },
-
   methods: {
     signup: function () {
       var signup = this
       this.axios.post('registration', {
         user: {
+          first_name: this.first_name,
+          last_name: this.last_name,
           email: this.email,
           password: this.password,
           password_confirmation: this.password_confirmation
@@ -60,10 +66,6 @@ export default {
         this.$store.state.logedIn = true
         this.$router.push(this.$route.query.redirect || '/home')
       }).catch(function (error) {
-        // console.log(this)
-        // console.log(apiErrors)
-        // console.log(error)
-        // console.log(error.response.data.error_messages)
         signup.errors = error.response.data.error_messages
       })
     }
