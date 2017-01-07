@@ -27,8 +27,8 @@ export default {
   name: 'app-header',
   props: ['title', 'message'],
   computed: {
-    currentUser () { return this.$store.state.currentUser },
-    logedIn () { return this.$store.state.logedIn }
+    currentUser () { return this.$store.getters.currentUser },
+    logedIn () { return this.$store.getters.logedIn }
   },
   methods: {
     logOut: function () {

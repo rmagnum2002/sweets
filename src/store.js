@@ -8,8 +8,17 @@ export const store = new Vuex.Store({
     cart_items: [],
     selected_tag: null,
     view_mode: window.sessionStorage.getItem('viewMode') || 'module',
-    logedIn: window.sessionStorage.getItem('accessToken') || false,
+    logedIn: (window.sessionStorage.getItem('accessToken') && window.sessionStorage.getItem('accessToken').length > 0) || false,
     currentUser: null
+  },
+
+  getters: {
+    currentUser: state => {
+      return state.currentUser
+    },
+    logedIn: state => {
+      return state.logedIn
+    }
   },
 
   mutations: {

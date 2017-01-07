@@ -32,6 +32,9 @@ export default {
 
   methods: {
     loadUser: function () {
+      if (!this.$store.getters.logedIn) {
+        return
+      }
       this.axios.get('user').then((response) => {
         this.$store.commit('setCurrentUser', response.data)
       }).catch(function (error) {
